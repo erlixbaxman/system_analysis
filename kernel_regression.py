@@ -36,14 +36,12 @@ def get_kernel_regression_estimation(y, h):
 def plotting(x, y, h,results, title):
     fig, ax = plt.subplots()
     ax.set_title(title)
-    # ax.set_xlabel('Days')
-    # ax.set_ylabel('Ruble/Gram')
     ax.grid()
-    ax.plot(x, y)
+    ax.plot(x, y_noisy)
     ax.plot(x, results[0])
     ax.plot(x, results[1])
     ax.plot(x, results[2])
-    ax.legend(('y(x)',
+    ax.legend(('y(x) с шумом',
                f'h1 = {h[0]}',
                f'h2 = {h[1]}',
                f'h3 = {h[2]}'))
@@ -52,7 +50,7 @@ def plotting(x, y, h,results, title):
 
 # Финальные штрихи
 approximation_results = []
-h = [2,4,8]
+h = [1.5,10,20]
 for i in h:
     approximation_results.append(get_kernel_regression_estimation(y_noisy,i))
 
